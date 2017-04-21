@@ -393,9 +393,9 @@ public class WMethod{
     	 System.out.println("public void testCase" + i + "(){");
     	 formattedTest = tests.get(i).replace("", " ");  
     	 if (Utilities.runFSM(FSM, 1, formattedTest, " ").contains(yes)) {
-    		 System.out.println("	assertTrue(" + tests.get(i) + ")");
+    		 System.out.println("	assertTrue(\"" + tests.get(i) + "\"));");
     	 } else {
-    		 System.out.println("	assertFalse(" + tests.get(i) + ")");
+    		 System.out.println("	assertFalse(\"" + tests.get(i) + ")\");");
     	 }
     	 System.out.println("}");
     	 System.out.println();
