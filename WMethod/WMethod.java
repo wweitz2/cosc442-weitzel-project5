@@ -382,9 +382,23 @@ public class WMethod{
      Utilities.printAllTestCases(tests); // Print tests.
      
      String formattedTest = "";
-     for (String test : tests) {
-    	 formattedTest = test.replace("", " ");  
-      	 Utilities.runFSM(FSM, 1, formattedTest, " ");
+//     for (String test : tests) {
+//    	 formattedTest = test.replace("", " ");  
+//      	 Utilities.runFSM(FSM, 1, formattedTest, " ");
+//     }
+     
+     CharSequence yes = "yes";
+     for (int i = 1; i < tests.size() - 1; i++) {
+    	 System.out.println("@Test");
+    	 System.out.println("public void testCase" + i + "(){");
+    	 formattedTest = tests.get(i).replace("", " ");  
+    	 if (Utilities.runFSM(FSM, 1, formattedTest, " ").contains(yes)) {
+    		 System.out.println("	assertTrue(" + tests.get(i) + ")");
+    	 } else {
+    		 System.out.println("	assertFalse(" + tests.get(i) + ")");
+    	 }
+    	 System.out.println("}");
+    	 System.out.println();
      }
      
    }// End of main()
